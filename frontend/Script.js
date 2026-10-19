@@ -15,7 +15,7 @@ askBtn.addEventListener("click", async () => {
 
     try {
 
-        const response = await fetch("https://phase-5-project-630v.onrender.com/", {
+        const response = await fetch("https://phase-5-project-630v.onrender.com/ask", {
             method: "POST",
 
             headers: {
