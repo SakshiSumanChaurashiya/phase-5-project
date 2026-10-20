@@ -14,9 +14,9 @@ const api = new GoogleGenAI({
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "frontend")));
 
-app.get("/", (req, res) => {
-    res.send("Ask Gemini Backend is working!");
-});
+// app.get("/", (req, res) => {
+//     res.send("Ask Gemini Backend is working!");
+// });
 
 app.post("/ask", async (req, res) => {
     try {
