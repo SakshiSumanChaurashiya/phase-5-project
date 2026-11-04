@@ -74,22 +74,35 @@ const { GoogleGenAI } = require("@google/genai");
 
 const app = express();
 
-// Serve frontend files
-app.use(express.static(path.join(__dirname, "public")));
-
+// CORS Configuration
 app.use(cors({
     origin: [
         "http://127.0.0.1:5500",
         "http://localhost:5500",
-        "https://sakshisumanchaurashiya.github.io"
-    ]
+        "http://localhost:3000",
+        "https://sakshisumanchaurashiya.github.io",
+        "https://phase-5-project-two.vercel.app",
+        "https://phase-5-project-sakshichaudhary62045s-projects.vercel.app",
+        "https://phase-5-project-git-main-sakshichaudhary62045s-projects.vercel.app"
+    ],
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
+// Serve frontend files
+app.use(express.static(path.join(__dirname, "public")));
+
+// Parse JSON requests
 app.use(express.json());
 
 // Connect to Gemini AI
 const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY
+});
+
+// Check backend
+app.get("/health", (req, res) => {
+    res.send("Ask Gemini Backend is working!");
 });
 
 // Ask Gemini AI
